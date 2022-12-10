@@ -1,0 +1,220 @@
+<!-- /**
+* CSCI2720/ESTR2106 Assignment 1
+* Bootstrap Web Page with a Web Form
+*
+* I declare that the assignment here submitted is original
+* except for source material explicitly acknowledged,
+* and that the same or closely related material has not been
+* previously submitted for another course.
+* I also acknowledge that I am aware of University policy and
+* regulations on honesty in academic work, and of the disciplinary
+* guidelines and procedures applicable to breaches of such
+* policy and regulations, as contained in the website.
+*
+* University Guideline on Academic Honesty:
+*   http://www.cuhk.edu.hk/policy/academichonesty
+* Faculty of Engineering Guidelines to Academic Honesty:
+*   https://www.erg.cuhk.edu.hk/erg/AcademicHonesty
+*
+* Student Name: YU Sihong
+* Student ID  : 1155141630
+* Date        : 2022/10/04
+*/ -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>YU Sihong's homepage</title>
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="custom.css">
+
+    <!-- bootstrap icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+
+    <!-- icon of our cse logo -->
+    <link rel="icon" href="cseicon-90x90.png" sizes="32x32" />
+    <link rel="icon" href="cseicon.png" sizes="192x192" />
+</head>
+
+<body calss='' style="font-family: 'Ubuntu', sans-serif; ">
+    <header class="container"
+        style="background-image:url(headerBackground.jpg); background-position: bottom; background-size:cover;">
+        <br>
+        <br>
+        <br>
+        <h1>YU Sihong</h1>
+        <h2>Computer Science & Engineering</h2>
+    </header>
+
+    <main calss="container">
+        <nav class="navbar navbar-expand-lg justify-content-center text-center mt-3">
+            <ul class="navbar-nav gap-3">
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#profile">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#hobby">Hobby</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#comment">Comment</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn nav-link text-danger" onclick="showhidden()"> Special!</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- hidden navbar -->
+        <nav class="navbar navbar-expand-lg justify-content-center text-center mt-3" style="display: none"
+            id="hiddenBar">
+            <ul class="navbar-nav gap-3">
+                <li class="nav-item"><button class="btn btn-outline-primary" onclick="task1()">Task1: Align</button>
+                </li>
+                <li class="nav-item"><button class="btn btn-outline-warning" onclick="task2()">Task2: New Hobby</button>
+                </li>
+                <li class="nav-item"><button class="btn btn-outline-info" onclick="task3()">Task3: Scroll</button>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="progress sticky-top mt-3" style="display: none" id="progressBar">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%"
+                id="progress"></div>
+        </div>
+
+        <div class="container mt-3 mb-5">
+            <div class="row justify-content-center" id="sections">
+                <section class="col-sm-6 col-md-5 col-lg-4 col-xl-3" style="background-color:lightskyblue" id="profile">
+                    <img src="selfPortrait.png" class="image_fluid">
+                    <h3 name="sectionTitle" class="text-start">Profile</h3>
+                    <hr>
+                    <p><i class="bi bi-geo-alt"></i> Hong Kong</p>
+                    <p><i class="bi bi-telephone"></i> 1234 5678</p>
+                    <p><i class="bi bi-envelope"></i> shyu0[at]qq.com</p>
+                </section>
+
+                <section class="col-sm-6 col-md-7 col-lg-8 col-xl-9" style="background-color:lightpink" id="about">
+                    <br>
+                    <h3 name="sectionTitle" class="text-start">About</h3>
+                    <hr>
+<p>This is YU Sihong, currently a year 4 computer science student at the New Asia College of the Chinese University of Hong Kong. You can call me Dale as well. The reason I chose this name is because it is the shortest name in the list of vocabulary words about people's names in my first English textbook in my high school. How time flies! I'm about to graduate but haven't figured out what to do in the future. </p>
+                    <p>At this moment I am struggling in csci2720. Well, it's actually estr2106. Oh no!</p>
+                </section>
+
+                <section class="col-sm-12 col-md-6 col-lg-7 col-xl-8" style="background-color:lightseagreen" id="hobby">
+                    <br>
+                    <h3 name="sectionTitle" class="text-start">Hobby</h3>
+                    <hr>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Item</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody id="hobbies">
+                            <tr>
+                                <td>Basketball</td>
+                                <td>My favorite sport</td>
+                            </tr>
+                            <tr>
+                                <td>Sleep</td>
+                                <td>Is good for health</td>
+                            </tr>
+                            <tr>
+                                <td>Music</td>
+                                <td>For no reason</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section class="col-sm-12 col-md-6 col-lg-5 col-xl-4" style="background-color:orange" id="comment">
+                    <br>
+                    <h3 name="sectionTitle" class="text-start">Comment</h3>
+                    <hr>
+                    <div id="comments">
+                        <div class="card bg-primary mt-3 ms-3 me-3">
+                            <div class="card-header">shyu0@qq.com</div>
+                            <div class="card-body">
+                                <p class="card-text">What a great job!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <h5>Leave your comment</h5>
+                    <hr>
+                    <form class="mb-3 ms-3 me-3">
+                        <div class="mb-3">
+                            <label for="new-email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="new-email" placeholder="name@example.com">
+                        </div>
+                        <div class="mb-3">
+                            <label for="new-comment" class="form-label">Comment</label>
+                            <textarea class="form-control" id="new-comment" rows="2"></textarea>
+                        </div>
+                        <div class="row ms-3 me-3 mb-3">
+                            <div class="col-sm-6 form-check">
+                                <input class="form-check-input" type="radio" name="new-color" id="new-color-red"
+                                    value="bg-danger">
+                                <label class="form-check-label" for="new-color-red">Red</label>
+                            </div>
+                            <div class="col-sm-6 form-check">
+                                <input class="form-check-input" type="radio" name="new-color" id="new-color-green"
+                                    value="bg-success">
+                                <label class="form-check-label" for="new-color-green">Green</label>
+                            </div>
+                            <div class="col-sm-6 form-check">
+                                <input class="form-check-input" type="radio" name="new-color" id="new-color-yellow"
+                                    value="bg-warning">
+                                <label class="form-check-label" for="new-color-yellow">Yellow</label>
+                            </div>
+                            <div class="col-sm-6 form-check">
+                                <input class="form-check-input" type="radio" name="new-color" id="new-color-blue"
+                                    value="bg-primary">
+                                <label class="form-check-label" for="new-color-blue">Blue</label>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-outline-secondary" onclick="processform()">Add comment</button>
+
+                        <!-- <button type="button" class="btn btn-outline-danger" onclick="loadfromfile()">Load file</button>
+                        <button type="button" class="btn btn-outline-danger" onclick="savetofile()">Save file</button> -->
+                    </form>
+                </section>
+
+                <section class="col-12" style="background-color:purple" id="about">
+                    <br>
+                    <h3 name="sectionTitle" class="text-start">Challenge Requirements</h3>
+                    <hr>
+                    <ul>
+                        <li>Implement dark mode vs. light mode according to the prefers-color-scheme
+                            setting at the browser, by adding a customed css file with <b>"@media"</b> component. In the light mode, the background are light with black text, whereas in the dark mode, the background are dark and texts are light.</li>
+                        <li>The functions of this page are written in typescipt with all type annotations, and then compiled to js file by<b> "tsc script.ts" </b>command.</li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+
+    </main>
+</body>
+
+<footer class="text-center">
+    <p>This is the assignment 1 of CSCI2720.<br>By YU Sihong. All Rights Reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+
+</html>
