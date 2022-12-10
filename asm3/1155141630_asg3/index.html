@@ -1,0 +1,90 @@
+<!-- /**
+ * CSCI2720/ESTR2106 Assignment 3
+ * Using Database via Node.js
+ *
+ * I declare that the assignment here submitted is original
+ * except for source material explicitly acknowledged,
+ * and that the same or closely related material has not been
+ * previously submitted for another course.
+ * I also acknowledge that I am aware of University policy and
+ * regulations on honesty in academic work, and of the disciplinary
+ * guidelines and procedures applicable to breaches of such
+ * policy and regulations, as contained in the website.
+ *
+ * University Guideline on Academic Honesty:
+ *   http://www.cuhk.edu.hk/policy/academichonesty
+ * Faculty of Engineering Guidelines to Academic Honesty:
+ *   https://www.erg.cuhk.edu.hk/erg/AcademicHonesty
+ *
+ * Student Name: YU Sihong
+ * Student ID  : 1155141630
+ * Date        : Dec, 2
+ */ -->
+
+<h1>Challenge Requirements</h1>
+
+<h3>Query No</h3>
+<p>
+    It is implemented by cookie, with maxAge 300,000. <br>
+    In every successful GET requests, the query no follows with the mongoose results, splitted by a comma. <br>
+    For example, [],{"query_no":3}.<br>
+    The failed requests are also counted but not displayed.</p>
+
+<h3>GraphQL</h3>
+
+<p>This part uses GraphQL to fetch the information of events and locations. <br>
+    It is implemented by Apollo Server and tested by Apollo sandbox.<br>
+    The sandbox is in https://studio.apollographql.com/sandbox/explorer.<br>
+    My graphql API is in http://localhost:3000/graphql.<br>
+    The following is the tested query operations.
+</p>
+
+
+<h5>Operations</h5>
+<p>query Query {
+    event(id:1){
+    eventId name loc { locId name } quota
+    }
+    }
+</p>
+<p>query Query {
+    events{
+    eventId
+    name
+    loc {
+    locId
+    name
+    }
+    quota
+    }
+    }</p>
+<p>
+    query Query{
+    location(id:1) {
+    locId
+    name
+    quota
+    }
+    }
+
+</p>
+
+<p>query Query{
+    locations {
+    locId
+    name
+    quota
+    }
+    }
+</p>
+<hr>
+
+<h1>My Custom Requests</h1>
+
+<ul>
+    <li><a href="/create">/create</a>: create two location datas, <br>
+        [{"locId":1,"name":"SHB924","quota":10},{"locId":2,"name":"ERB LT","quota":5}].</li>
+    <li><a href="/clear">/clear</a>: clear all locations and events.</li>
+    <li><a href="/forms.html">/forms.html</a>: forms for Q2, 3, 8.</li>
+    <li>/ev4q8/eventId: GET request for Q8 (used in froms.html).</li>
+</ul>

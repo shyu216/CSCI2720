@@ -1,0 +1,150 @@
+<!-- /**
+ * CSCI2720/ESTR2106 Assignment 3
+ * Using Database via Node.js
+ *
+ * I declare that the assignment here submitted is original
+ * except for source material explicitly acknowledged,
+ * and that the same or closely related material has not been
+ * previously submitted for another course.
+ * I also acknowledge that I am aware of University policy and
+ * regulations on honesty in academic work, and of the disciplinary
+ * guidelines and procedures applicable to breaches of such
+ * policy and regulations, as contained in the website.
+ *
+ * University Guideline on Academic Honesty:
+ *   http://www.cuhk.edu.hk/policy/academichonesty
+ * Faculty of Engineering Guidelines to Academic Honesty:
+ *   https://www.erg.cuhk.edu.hk/erg/AcademicHonesty
+ *
+ * Student Name: YU Sihong
+ * Student ID  : 1155141630
+ * Date        : Dec, 2
+ */ -->
+
+<h1>New Event (for Q2)</h1>
+<form action="http://localhost:3000/ev" method="post">
+
+    <label for="eventname">name</label>
+    <input type="text" id="eventname" name="name">
+    <br>
+
+    <label for="eventloc">location id</label>
+    <input type="text" id="eventloc" name="locId">
+    <br>
+
+    <label for="eventquota">quota</label>
+    <input type="text" id="eventquota" name="quota">
+    <br>
+
+    <input type="submit">
+</form>
+
+<hr />
+
+<h1>Delete (for Q3)</h1>
+<form action="http://localhost:3000/ev" onsubmit="dele();return false;">
+
+    <label for="eventId">event id</label>
+    <input type="text" id="delid" name="eventId">
+    <br>
+
+    <input type="submit">
+</form>
+
+<script>
+    const dele = () => {
+        const response = fetch("http://localhost:3000/ev/" + document.getElementById("delid").value, {
+            method: 'DELETE'
+        });
+        document.getElementById("delid").value = "";
+        return response;
+    }
+</script>
+
+<hr />
+
+<h1>Update (for Q8)</h1>
+
+<p>Submit event id to get the information of cooresponding event, results shown in the second form.</p>
+
+<form onsubmit="requ();return false;">
+
+    <label for="eid">event id</label>
+    <input type="text" id="eid" name="req">
+    <br>
+
+    <input type="submit">
+</form>
+
+<br />
+
+<form onsubmit="upd();return false;">
+
+    <label for="ename">name</label>
+    <input type="text" id="ename" name="up">
+    <br>
+
+    <label for="eloc">location id</label>
+    <input type="text" id="eloc" name="up">
+    <br>
+
+    <label for="equota">quota</label>
+    <input type="text" id="equota" name="up">
+    <br>
+
+    <input type="submit">
+
+</form>
+
+<script>
+    let eid = '';
+    const requ = () => {
+        eid = document.getElementById("eid").value;
+        const res = fetch('http://localhost:3000/ev4q8/' + document.getElementById("eid").value)
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                document.getElementById("eid").disabled = true;
+                document.getElementById("ename").value = data.name;
+                document.getElementById("eloc").value = data.loc.locId;
+                document.getElementById("equota").value = data.quota;
+            })
+            .catch(() => {
+                alert('404');
+                document.getElementById("eid").value = "";
+            });
+        return res;
+    }
+    const upd = () => {
+        if (!eid) {
+            return alert('please set event id first!');
+        }
+        const bod = {
+            "name": document.getElementById("ename").value,
+            "loc": document.getElementById("eloc").value,
+            "quota": document.getElementById("equota").value
+        }
+
+        document.getElementById("eid").disabled = false;
+        document.getElementById("eid").value = "";
+
+        document.getElementById("ename").value = "";
+        document.getElementById("eloc").value = "";
+        document.getElementById("equota").value = "";
+        console.log(eid)
+        console.log(bod)
+        const response = fetch("http://localhost:3000/ev/" + eid, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(bod)
+        });
+        return response;
+
+        // const formData = new FormData();
+        // formData.append("name", document.getElementById("ename").value)
+        // formData.append("loc", document.getElementById("eloc").value)
+        // formData.append("quota", document.getElementById("equota").value)
+    }
+</script>
